@@ -69,7 +69,7 @@ class REST::InstanceSerializer < ActiveModel::Serializer
 
 <<<<<<< HEAD
   def max_toot_chars
-      500
+      5000
   end
   
 =======
