@@ -8,8 +8,12 @@ class TagsIndex < Chewy::Index
         keep_both: false,
          delimiter: '#',
          convert_type: 't2s',
+       },
+     },
+
     analyzer: {
       content: {
+         #tokenizer: 'keyword',
         tokenizer: 'ik_max_word',
         filter: %w(lowercase asciifolding cjk_width),
         char_filter: %w(tsconvert),
