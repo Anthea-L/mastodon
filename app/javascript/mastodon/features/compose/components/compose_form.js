@@ -77,6 +77,18 @@ class ComposeForm extends ImmutablePureComponent {
     }
   }
 
+  getFulltextForCharacterCounting = () => {
+    return [this.props.spoiler? this.props.spoilerText: '', countableText(this.props.text)].join('');
+  }
+
+  canSubmit = () => {
+    const { isSubmitting, isChangingUpload, isUploading, anyMedia } = this.props;
+    const fulltext = this.getFulltextForCharacterCounting();
+    const isOnlyWhitespace = fulltext.length !== 0 && fulltext.trim().length === 0;
+
+    return !(isSubmitting || isUploading || isChangingUpload || length(fulltext) > 500 || (isOnlyWhitespace && !anyMedia));
+  }
+
   handleSubmit = () => {
     if (this.props.text !== this.autosuggestTextarea.textarea.value) {
       // Something changed the text inside the textarea (e.g. browser extensions like Grammarly)
@@ -84,11 +96,15 @@ class ComposeForm extends ImmutablePureComponent {
       this.props.onChange(this.autosuggestTextarea.textarea.value);
     }
 
+<<<<<<< HEAD
     // Submit disabled:
     const { isSubmitting, isChangingUpload, isUploading, anyMedia } = this.props;
     const fulltext = [this.props.spoilerText, countableText(this.props.text)].join('');
 
     if (isSubmitting || isUploading || isChangingUpload || length(fulltext) > 5000 || (fulltext.length !== 0 && fulltext.trim().length === 0 && !anyMedia)) {
+=======
+    if (!this.canSubmit()) {
+>>>>>>> v3.3.0
       return;
     }
 
@@ -178,10 +194,13 @@ class ComposeForm extends ImmutablePureComponent {
   }
 
   render () {
-    const { intl, onPaste, showSearch, anyMedia } = this.props;
+    const { intl, onPaste, showSearch } = this.props;
     const disabled = this.props.isSubmitting;
+<<<<<<< HEAD
     const text     = [this.props.spoilerText, countableText(this.props.text)].join('');
     const disabledButton = disabled || this.props.isUploading || this.props.isChangingUpload || length(text) > 5000 || (text.length !== 0 && text.trim().length === 0 && !anyMedia);
+=======
+>>>>>>> v3.3.0
     let publishText = '';
 
     if (this.props.privacy === 'private' || this.props.privacy === 'direct') {
@@ -243,11 +262,15 @@ class ComposeForm extends ImmutablePureComponent {
             <PrivacyDropdownContainer />
             <SpoilerButtonContainer />
           </div>
+<<<<<<< HEAD
           <div className='character-counter__wrapper'><CharacterCounter max={5000} text={text} /></div>
+=======
+          <div className='character-counter__wrapper'><CharacterCounter max={500} text={this.getFulltextForCharacterCounting()} /></div>
+>>>>>>> v3.3.0
         </div>
 
         <div className='compose-form__publish'>
-          <div className='compose-form__publish-button-wrapper'><Button text={publishText} onClick={this.handleSubmit} disabled={disabledButton} block /></div>
+          <div className='compose-form__publish-button-wrapper'><Button text={publishText} onClick={this.handleSubmit} disabled={!this.canSubmit()} block /></div>
         </div>
       </div>
     );

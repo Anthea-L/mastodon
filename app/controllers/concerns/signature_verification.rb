@@ -76,6 +76,10 @@ module SignatureVerification
     raise SignatureVerificationError, 'Signed request date outside acceptable time window' unless matches_time_window?
 
     verify_signature_strength!
+<<<<<<< HEAD
+=======
+    verify_body_digest!
+>>>>>>> v3.3.0
 
     account = account_from_key_id(signature_params['keyId'])
 
@@ -126,12 +130,28 @@ module SignatureVerification
   def verify_signature_strength!
     raise SignatureVerificationError, 'Mastodon requires the Date header or (created) pseudo-header to be signed' unless signed_headers.include?('date') || signed_headers.include?('(created)')
     raise SignatureVerificationError, 'Mastodon requires the Digest header or (request-target) pseudo-header to be signed' unless signed_headers.include?(Request::REQUEST_TARGET) || signed_headers.include?('digest')
+<<<<<<< HEAD
     raise SignatureVerificationError, 'Mastodon requires the Host header to be signed' unless signed_headers.include?('host')
     raise SignatureVerificationError, 'Mastodon requires the Digest header to be signed when doing a POST request' if request.post? && !signed_headers.include?('digest')
   end
 
+=======
+    raise SignatureVerificationError, 'Mastodon requires the Host header to be signed when doing a GET request' if request.get? && !signed_headers.include?('host')
+    raise SignatureVerificationError, 'Mastodon requires the Digest header to be signed when doing a POST request' if request.post? && !signed_headers.include?('digest')
+  end
+
+  def verify_body_digest!
+    return unless signed_headers.include?('digest')
+
+    digests = request.headers['Digest'].split(',').map { |digest| digest.split('=', 2) }.map { |key, value| [key.downcase, value] }
+    sha256  = digests.assoc('sha-256')
+    raise SignatureVerificationError, "Mastodon only supports SHA-256 in Digest header. Offered algorithms: #{digests.map(&:first).join(', ')}" if sha256.nil?
+    raise SignatureVerificationError, "Invalid Digest value. Computed SHA-256 digest: #{body_digest}; given: #{sha256[1]}" if body_digest != sha256[1]
+  end
+
+>>>>>>> v3.3.0
   def verify_signature(account, signature, compare_signed_string)
-    if account.keypair.public_key.verify(OpenSSL::Digest::SHA256.new, signature, compare_signed_string)
+    if account.keypair.public_key.verify(OpenSSL::Digest.new('SHA256'), signature, compare_signed_string)
       @signed_request_account = account
       @signed_request_account
     end
@@ -153,8 +173,11 @@ module SignatureVerification
         raise SignatureVerificationError, 'Pseudo-header (expires) used but corresponding argument missing' if signature_params['expires'].blank?
 
         "(expires): #{signature_params['expires']}"
+<<<<<<< HEAD
       elsif signed_header == 'digest'
         "digest: #{body_digest}"
+=======
+>>>>>>> v3.3.0
       else
         "#{signed_header}: #{request.headers[to_header_name(signed_header)]}"
       end
@@ -187,7 +210,7 @@ module SignatureVerification
   end
 
   def body_digest
-    "SHA-256=#{Digest::SHA256.base64digest(request_body)}"
+    @body_digest ||= Digest::SHA256.base64digest(request_body)
   end
 
   def to_header_name(name)
