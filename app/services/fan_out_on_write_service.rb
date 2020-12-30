@@ -6,11 +6,8 @@ class FanOutOnWriteService < BaseService
   def call(status)
     raise Mastodon::RaceConditionError if status.visibility.nil?
 
-<<<<<<< HEAD
-=======
     deliver_to_self(status) if status.account.local?
 
->>>>>>> v3.3.0
     if status.direct_visibility?
       deliver_to_mentioned_followers(status)
       deliver_to_own_conversation(status)

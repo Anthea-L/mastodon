@@ -2,11 +2,8 @@
 
 class Webfinger
   class Error < StandardError; end
-<<<<<<< HEAD
-=======
   class GoneError < Error; end
   class RedirectError < StandardError; end
->>>>>>> v3.3.0
 
   class Response
     def initialize(body)

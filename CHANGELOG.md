@@ -3,8 +3,6 @@ Changelog
 
 All notable changes to this project will be documented in this file.
 
-<<<<<<< HEAD
-=======
 ## [3.3.0] - 2020-12-27
 ### Added
 
@@ -207,7 +205,6 @@ All notable changes to this project will be documented in this file.
 - Fix 2FA/sign-in token sessions being valid after password change ([Gargron](https://github.com/tootsuite/mastodon/pull/14802))
 - Fix resolving accounts sometimes creating duplicate records for a given ActivityPub identifier ([ThibG](https://github.com/tootsuite/mastodon/pull/15364))
 
->>>>>>> v3.3.0
 ## [3.2.1] - 2020-10-19
 ### Added
 
