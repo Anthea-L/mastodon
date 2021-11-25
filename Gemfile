@@ -155,10 +155,7 @@ gem 'concurrent-ruby', require: false
 gem 'connection_pool', require: false
 
 gem 'xorcist', '~> 1.1'
-<<<<<<< HEAD
-gem 'pluck_each', '~> 0.1.3'
+gem 'pluck_each', '~> 0.2.0'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-=======
 
 gem 'resolv', '~> 0.1.0'
->>>>>>> v3.4.3
