@@ -132,7 +132,7 @@ group :development do
   gem 'binding_of_caller', '~> 1.0'
   gem 'bullet', '~> 6.1'
   gem 'letter_opener', '~> 1.7'
-  gem 'letter_opener_web', '~> 1.4'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'memory_profiler'
   gem 'rubocop', '~> 1.15', require: false
   gem 'rubocop-rails', '~> 2.10', require: false
@@ -155,10 +155,7 @@ gem 'concurrent-ruby', require: false
 gem 'connection_pool', require: false
 
 gem 'xorcist', '~> 1.1'
-<<<<<<< HEAD
 gem 'pluck_each', '~> 0.1.3'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-=======
 
 gem 'resolv', '~> 0.1.0'
->>>>>>> v3.4.3
