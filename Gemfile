@@ -59,7 +59,7 @@ gem 'httplog', '~> 1.5.0'
 gem 'idn-ruby', require: 'idn'
 gem 'kaminari', '~> 1.2'
 gem 'link_header', '~> 0.0'
-gem 'mime-types', '~> 3.3.1', require: 'mime/types/columnar'
+gem 'mime-types', '~> 3.4.1', require: 'mime/types/columnar'
 gem 'nokogiri', '~> 1.11'
 gem 'nsa', '~> 0.2'
 gem 'oj', '~> 3.11'
@@ -155,10 +155,7 @@ gem 'concurrent-ruby', require: false
 gem 'connection_pool', require: false
 
 gem 'xorcist', '~> 1.1'
-<<<<<<< HEAD
 gem 'pluck_each', '~> 0.1.3'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-=======
 
 gem 'resolv', '~> 0.1.0'
->>>>>>> v3.4.3
