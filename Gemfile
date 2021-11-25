@@ -80,7 +80,7 @@ gem 'ruby-progressbar', '~> 1.11'
 gem 'sanitize', '~> 5.2'
 gem 'scenic', '~> 1.5'
 gem 'sidekiq', '~> 6.2'
-gem 'sidekiq-scheduler', '~> 3.0'
+gem 'sidekiq-scheduler', '~> 3.1'
 gem 'sidekiq-unique-jobs', '~> 7.0'
 gem 'sidekiq-bulk', '~>0.2.0'
 gem 'simple-navigation', '~> 4.3'
@@ -155,10 +155,7 @@ gem 'concurrent-ruby', require: false
 gem 'connection_pool', require: false
 
 gem 'xorcist', '~> 1.1'
-<<<<<<< HEAD
 gem 'pluck_each', '~> 0.1.3'
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
-=======
 
 gem 'resolv', '~> 0.1.0'
->>>>>>> v3.4.3
