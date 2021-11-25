@@ -9,11 +9,15 @@ module Mastodon
     end
 
     def minor
-      3
+      4
     end
 
     def patch
+<<<<<<< HEAD
       1
+=======
+      3
+>>>>>>> v3.4.3
     end
 
     def flags
@@ -33,7 +37,7 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'tootsuite/mastodon')
+      ENV.fetch('GITHUB_REPOSITORY', 'mastodon/mastodon')
     end
 
     def source_base_url
