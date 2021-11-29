@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/mimemagicrb/mimemagic.git
-  revision: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
-  ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
-  specs:
-    mimemagic (0.3.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -357,6 +350,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.3)
     mini_portile2 (2.5.2)
       net-ftp (~> 0.1)
@@ -744,7 +740,7 @@ DEPENDENCIES
   memory_profiler
   microformats (~> 4.2)
   mime-types (~> 3.3.1)
-  mimemagic!
+  mimemagic
   net-ldap (~> 0.17)
   nokogiri (~> 1.11)
   nsa (~> 0.2)
